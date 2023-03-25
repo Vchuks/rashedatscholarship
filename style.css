@@ -1,9 +1,4 @@
-/* *{
-    width: 100%;
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-} */
+
 .pagemodal {
     display: none;
     position: fixed;
@@ -28,6 +23,9 @@
     border-radius: 50%;
     /* -webkit-animation: spin 2s linear infinite;
     animation: spin 2s linear infinite; */
+}
+.log{
+    width: 50%;
 }
 .blue{
     background-color: rgb(32, 32, 97);
@@ -141,14 +139,18 @@ th{
 thead{
     text-align: center;
 }
+.bttn:hover{
+    border: ipx solid rgb(32, 32, 97);
+    color: rgb(32, 32, 97);
+}
 
 @media screen and (max-width:997px) {
     @keyframes move{
         from{left: -30%;}
         to{left: 0px;}
     }
-    main{
-        box-sizing: border-box;
+    .log{
+        width: 100%;
     }
     .sidebar{
         position: absolute;

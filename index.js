@@ -92,69 +92,8 @@ function viewEach(id) {
     const getAddress = document.querySelector(".addressview");
     const getVideo = document.querySelector(".videoview");
     const getGender = document.querySelector(".genderview");
-    localStorage.setItem("getId",id)
+    const getId = id;
  
-}
-function postStudent(){
-  const getSpinn = document.getElementsByClassName("spin");
-  getSpinn.style.display = "inline-block";
-  const getView = document.querySelector(".viewEach");
-  getView.style.display = "block";
-  const getFull = document.querySelector(".fullnameview");
-    const getEmail = document.querySelector(".emailview");
-    const getPhone = document.querySelector(".phonenumview");
-    const getCountry = document.querySelector(".countryview");
-    const getState = document.querySelector(".stateview");
-    const getCity = document.querySelector(".cityview");
-    const getAddress = document.querySelector(".addressview");
-    const getVideo = document.querySelector(".videoview");
-    const getGender = document.querySelector(".genderview");
-    const getIdStore = localStorage.getItem("getId");
-  
-    const myFormData = new FormData();
-    myFormData.append("id", getIdStore);
-    myFormData.append("full_name", getFull);
-    myFormData.append("email", getEmail);
-    myFormData.append("phone_number", getPhone);
-    myFormData.append("country", getCountry);
-    myFormData.append("state", getState);
-    myFormData.append("city", getCity);
-    myFormData.append("address", getAddress);
-    myFormData.append("video", getVideo);
-    myFormData.append("gender", getGender);
-  
-  const loginReq = {
-    method: "POST",
-    body: myFormData,
-  };
-  url =
-    "https://pluralcode.academy/pluralcode_apis/api/get_scholarship_students_details";
-  fetch(url, loginReq)
-    .then((response) => response.json())
-    .then((result) => {
-      if (result.status === "success") {
-        Swal.fire({
-          icon: "success",
-          text: "Successful",
-          confirmButtonColor: "#2d85de",
-        });
-
-        setTimeout(() => {
-          location.reload();
-        }, 3000);
-      }
-      //if not successful
-      else {
-        Swal.fire({
-          icon: "warning",
-          text: "Unsuccessful!",
-          confirmButtonColor: "#2d85de",
-        });
-
-        getSpin.style.display = "none";
-      }
-    })
-    .catch((error) => console.log("error", error));
 }
 
 async function getStudents() {

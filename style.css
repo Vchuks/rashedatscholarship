@@ -33,7 +33,7 @@
 .height{
     height: 100vh;
 }
-#spin ,.spin{
+#spin ,.spin, .spinn{
     display: none;
 }
 .sidebar{

@@ -162,7 +162,7 @@ thead{
     font-weight: 500;
 }
 .close{
-    color: rgb(32, 32, 97);
+    color: rgb(32, 32, 97); 
 }
  ::-webkit-scrollbar{
     width: 5px;

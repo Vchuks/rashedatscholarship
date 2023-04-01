@@ -80,21 +80,6 @@ function close(){
 }
 
 
-function viewEach(id) {
-  const getView = document.querySelector(".viewEach");
-  getView.style.display = "block";
-  const getFull = document.querySelector(".fullnameview");
-    const getEmail = document.querySelector(".emailview");
-    const getPhone = document.querySelector(".phonenumview");
-    const getCountry = document.querySelector(".countryview");
-    const getState = document.querySelector(".stateview");
-    const getCity = document.querySelector(".cityview");
-    const getAddress = document.querySelector(".addressview");
-    const getVideo = document.querySelector(".videoview");
-    const getGender = document.querySelector(".genderview");
-    const getId = id;
- 
-}
 
 async function getStudents() {
   const result = JSON.parse(localStorage.getItem("result"));
@@ -102,17 +87,17 @@ async function getStudents() {
   getAdName.innerHTML = result.email;
   const getTable = document.querySelector(".tableBody");
   const url =
-    "https://pluralcode.academy/pluralcode_apis/api/get_scholarship_students";
-
+  "https://pluralcode.academy/pluralcode_apis/api/get_scholarship_students";
+  
   //get headers
   const tokHead = new Headers();
   tokHead.append("Authorization", `Bearer ${getToken("result")}`);
-
+  
   const req = {
     method: "GET",
     headers: tokHead,
   };
-
+  
   const response = await fetch(url, req);
   const data = await response.json();
   let tableList = "";
@@ -138,22 +123,52 @@ async function getStudents() {
     <td class="tscore">${student.video_link}</td>
     <td class="tscore">${student.gender}</td>
     <td><button class= "btn text-primary fw-bold" onclick="viewEach(${student.id})">View</button></td>
-  </tr>`;
-  if (student.id) {
-    getFull.setAttribute("value", student.full_name);
-    getEmail.setAttribute("value", student.email);
-    getPhone.setAttribute("value", student.phone_number);
-    getCountry.setAttribute("value", student.country);
-    getState.setAttribute("value", student.state);
-    getCity.setAttribute("value", student.city);
-    getAddress.setAttribute("value", student.address);
-    getVideo.setAttribute("value", student.video_link);
-    getGender.setAttribute("value", student.gender);
-  }
+    </tr>`;
+    
   });
   getTable.innerHTML = tableList;
- 
+  
 }
 getStudents();
+
+function viewEach(id) {
+  const getFull = document.querySelector(".fullnameview");
+    const getEmail = document.querySelector(".emailview");
+    const getPhone = document.querySelector(".phonenumview");
+    const getCountry = document.querySelector(".countryview");
+    const getState = document.querySelector(".stateview");
+    const getCity = document.querySelector(".cityview");
+    const getAddress = document.querySelector(".addressview");
+    const getVideo = document.querySelector(".videoview");
+    const getGender = document.querySelector(".genderview");
+    const tokHead = new Headers();
+  tokHead.append("Authorization", `Bearer ${getToken("result")}`);
+  const form = new FormData();
+  form.append("id",id)
+
+  const catReq = {
+    method: "POST",
+    headers: tokHead,
+    body: form
+  };
+
+  const url = `https://pluralcode.academy/pluralcode_apis/api/get_scholarship_students_details`;
+  fetch(url, catReq)
+    .then((response) => response.json())
+    .then((student) => {
+      
+        getFull.setAttribute("value", student[0].full_name);
+        getEmail.setAttribute("value", student[0].email);
+        getPhone.setAttribute("value", student[0].phone_number);
+        getCountry.setAttribute("value", student[0].country);
+        getState.setAttribute("value", student[0].state);
+        getCity.setAttribute("value", student[0].city);
+        getAddress.setAttribute("value", student[0].address);
+        getVideo.setAttribute("value", student[0].video_link);
+        getGender.setAttribute("value", student[0].gender);
+
+    });
+ 
+}
 
 

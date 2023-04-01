@@ -130,8 +130,9 @@ async function getStudents() {
   
 }
 getStudents();
-
 function viewEach(id) {
+  const getView = document.querySelector(".viewEach");
+  getView.style.display = "block";
   const getFull = document.querySelector(".fullnameview");
     const getEmail = document.querySelector(".emailview");
     const getPhone = document.querySelector(".phonenumview");

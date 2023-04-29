@@ -115,7 +115,7 @@
 }
 table{
     position: relative;
-    border-collapse: collapse;
+    /* border-collapse: collapse; */
 }
 thead{
     position: sticky;
@@ -124,7 +124,7 @@ thead{
 td{
     padding: 1rem;
     border:2px solid #e3e6df;
-    border-collapse: collapse;
+    /* border-collapse: collapse; */
 }
 
 th{
@@ -163,6 +163,20 @@ thead{
 }
 .close{
     color: rgb(32, 32, 97); 
+    cursor: pointer;
+}
+.exp-cont{
+    width: 90%;
+    margin: auto;
+    padding-top: 1rem;
+}
+.export-btn{
+    padding: 5px 20px;
+    border: none;
+    border-radius: 10px;
+    /* margin: 2rem 0 0 3rem; */
+    box-shadow: 1px 1px 10px gray;
+    color: rgb(32, 32, 97);
 }
  ::-webkit-scrollbar{
     width: 5px;
@@ -248,4 +262,8 @@ thead{
     .viewEach form{
         width: 90%;
     }
+   .exp-cont{
+    width: 99%;
+    padding-bottom: 0.5rem;
+   }
 }

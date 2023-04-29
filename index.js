@@ -172,4 +172,31 @@ function viewEach(id) {
  
 }
 
+const tbldata = document.querySelector('#rashTable');
+function exportExcel(tbl){
+  var downloadLink;
+    var dataType = 'application/vnd.ms-excel';
+    var tableSelect = document.getElementById(tbl);
+    var tableHTML = tableSelect.outerHTML.replace(/ /g, '%20');
+
+    
+    // Create download link element
+    downloadLink = document.createElement("a");
+    
+    document.body.appendChild(downloadLink);
+    
+    if(navigator.msSaveOrOpenBlob){
+        var blob = new Blob(['\ufeff', tableHTML], {
+            type: dataType
+        });
+        navigator.msSaveOrOpenBlob( blob, filename);
+    }else{
+        // Create a link to the file
+        downloadLink.href = 'data:' + dataType + ', ' + tableHTML;
+    
+        //triggering the function
+        downloadLink.click();
+    }
+  
+}
 

@@ -100,12 +100,14 @@ async function getStudents() {
   
   const response = await fetch(url, req);
   const data = await response.json();
+  console.log(data)
   let tableList = "";
   const getAll = data.forEach((student) => {
     const getFull = document.querySelector(".fullnameview");
     const getEmail = document.querySelector(".emailview");
     const getPhone = document.querySelector(".phonenumview");
     const getCountry = document.querySelector(".countryview");
+    const getCourse = document.querySelector(".course");
     const getState = document.querySelector(".stateview");
     const getCity = document.querySelector(".cityview");
     const getAddress = document.querySelector(".addressview");
@@ -117,6 +119,7 @@ async function getStudents() {
     <td class="temail">${student.email}</td>
     <td class="tphnum">${student.phone_number}</td>
     <td class="tpos">${student.country}</td>
+    <td class="tpos">${student.course}</td>
     <td class="tscore">${student.state}</td>
     <td class="tscore">${student.city}</td>
     <td class="tscore">${student.address}</td>
@@ -137,6 +140,7 @@ function viewEach(id) {
     const getEmail = document.querySelector(".emailview");
     const getPhone = document.querySelector(".phonenumview");
     const getCountry = document.querySelector(".countryview");
+    const getCourse = document.querySelector(".course");
     const getState = document.querySelector(".stateview");
     const getCity = document.querySelector(".cityview");
     const getAddress = document.querySelector(".addressview");
@@ -162,6 +166,7 @@ function viewEach(id) {
         getEmail.setAttribute("value", student[0].email);
         getPhone.setAttribute("value", student[0].phone_number);
         getCountry.setAttribute("value", student[0].country);
+        getCourse.setAttribute("value", student[0].course);
         getState.setAttribute("value", student[0].state);
         getCity.setAttribute("value", student[0].city);
         getAddress.setAttribute("value", student[0].address);
